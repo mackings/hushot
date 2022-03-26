@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1012124237125",
+    "project_id": "hushot-technologies",
+    "storage_bucket": "hushot-technologies.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012124237125:android:526751f8b4d1e4e7a7d22c",
+        "android_client_info": {
+          "package_name": "com.example.hushot_technologies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012124237125-5mm5jjdmair3u8mcdgec4s8avk4kc4fd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbvo1qbrsIn0NIEfq_0m5np_VYLYzal-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012124237125-5mm5jjdmair3u8mcdgec4s8avk4kc4fd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
