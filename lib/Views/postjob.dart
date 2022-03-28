@@ -24,6 +24,7 @@ class _PostjobState extends State<Postjob> {
   //Post Jobs
   final user = FirebaseAuth.instance.currentUser;
 
+
   Future PostaJob() async {
    
     FirebaseFirestore.instance.collection('UploadedJobs').add({
@@ -32,7 +33,15 @@ class _PostjobState extends State<Postjob> {
       'jobLocation': _Joblocation.text.trim(),
       'jobAmount': _Payableamount.text.trim(),
       'peopleRequired': _Peoplerequired.text.trim(),
+      'PosterEmail':'Macsonline500@gmail.com'
     }).whenComplete(() => print('New Job Posted'));
+  }
+
+
+  Future Jobnotifications() async {
+
+    
+
   }
 
   final jobkey = GlobalKey<FormState>();
@@ -60,7 +69,8 @@ class _PostjobState extends State<Postjob> {
                         style: TextStyle(
                             fontFamily: 'montserrat',
                             fontSize: 30,
-                            fontWeight: FontWeight.bold)),
+                            fontWeight: FontWeight.bold,
+                            )),
                   ],
                 ),
                 Row(

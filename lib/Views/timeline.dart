@@ -17,11 +17,13 @@ class TimeLine extends StatefulWidget {
 }
 
 class _TimeLineState extends State<TimeLine> {
+  dynamic Posteremail;
+  final Posterid = FirebaseAuth.instance.currentUser!.uid;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-       
         body: StreamBuilder<QuerySnapshot>(
           stream:
               FirebaseFirestore.instance.collection('UploadedJobs').snapshots(),
@@ -36,21 +38,21 @@ class _TimeLineState extends State<TimeLine> {
                           fontWeight: FontWeight.bold)),
                 );
               }
+
+             // Posteremail = FirebaseFirestore.instance.doc('Users/$Posterid');
+
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  Jobs AvailableJobs =
-                      Jobs.fromJson(snapshot.data.docs[index]);
+                  Jobs AvailableJobs = Jobs.fromJson(snapshot.data.docs[index]);
+
                   return Column(
                     children: [
                       SizedBox(
                         height: 10,
                       ),
-
-
-                              SizedBox(height: 20,),
-
-
-
+                      SizedBox(
+                        height: 20,
+                      ),
                       Container(
                         height: 190,
                         width: MediaQuery.of(context).size.width - 20,
@@ -191,11 +193,11 @@ class _TimeLineState extends State<TimeLine> {
                                   width: 10,
                                 ),
                                 Text(
-                                 '${DateTime.now()}',
-                                 style: TextStyle(
-                                     fontFamily: 'montserrat',
-                                     fontSize: 15,
-                                     color: Colors.white),
+                                  '${DateTime.now()}',
+                                  style: TextStyle(
+                                      fontFamily: 'montserrat',
+                                      fontSize: 15,
+                                      color: Colors.white),
                                 ),
                               ],
                             ),
@@ -204,9 +206,7 @@ class _TimeLineState extends State<TimeLine> {
                       ),
                     ],
                   );
-                  
                 },
-
                 itemCount: snapshot.data.docs.length,
               );
             } else {
