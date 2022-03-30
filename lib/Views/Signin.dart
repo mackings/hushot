@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Homescreen.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -115,7 +116,24 @@ TextEditingController _passwordController = TextEditingController();
                 Center(
                   child: GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (Context)=>HomeScreen()));
+                     
+                      Loader.show(context,
+                      isBottomBarOverlay: true,
+                      overlayColor: Colors.black,
+                      
+                      progressIndicator: const CircularProgressIndicator(
+                        backgroundColor: Colors.black,
+                      ),
+                      );
+
+                      Future.delayed(Duration(seconds: 10)).then((value) {
+                        Loader.hide();
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                      });
+
+
+                      Loader.hide();
+                     // Navigator.push(context, MaterialPageRoute(builder: (Context)=>HomeScreen()));
                     },
                     child: Container(
                       height: 60,
@@ -159,7 +177,7 @@ TextEditingController _passwordController = TextEditingController();
               ],
             ),
           ),
-        )      // Figma Flutter Generator SignupWidget - FRAME
+        )      
      
       ),
     );

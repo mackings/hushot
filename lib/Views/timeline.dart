@@ -17,8 +17,8 @@ class TimeLine extends StatefulWidget {
 }
 
 class _TimeLineState extends State<TimeLine> {
-  dynamic Posteremail;
-  final Posterid = FirebaseAuth.instance.currentUser!.uid;
+  //dynamic Posteremail;
+  //final Posterid = FirebaseAuth.instance.currentUser!.uid;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _TimeLineState extends State<TimeLine> {
                 );
               }
 
-             // Posteremail = FirebaseFirestore.instance.doc('Users/$Posterid');
+              // Posteremail = FirebaseFirestore.instance.doc('Users/$Posterid');
 
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
@@ -54,7 +54,7 @@ class _TimeLineState extends State<TimeLine> {
                         height: 20,
                       ),
                       Container(
-                        height: 190,
+                        height: 210,
                         width: MediaQuery.of(context).size.width - 20,
                         decoration: BoxDecoration(
                           color: Colors.black,
@@ -89,6 +89,9 @@ class _TimeLineState extends State<TimeLine> {
                                       fontSize: 15,
                                       color: Colors.white),
                                 ),
+                                SizedBox(width: 20,),
+
+                                
                               ],
                             ),
                             Row(
@@ -199,6 +202,25 @@ class _TimeLineState extends State<TimeLine> {
                                       fontSize: 15,
                                       color: Colors.white),
                                 ),
+
+
+                                
+                              ],
+                            ),
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                SizedBox(width:15 ,),
+                                GestureDetector(
+                                  onTap: (){
+                                    print('You clicked on the job');
+                                  },
+                                  child: Text('Apply Now',
+                                          style: TextStyle(
+                                              fontFamily: 'montserrat',
+                                              fontSize: 15,
+                                              color: Colors.white)),
+                                ),
                               ],
                             ),
                           ],
@@ -220,4 +242,24 @@ class _TimeLineState extends State<TimeLine> {
       ),
     );
   }
+}
+
+Widget AF() {
+  return AlertDialog(
+    title: Text('Are you sure you want to delete this job?'),
+    actions: <Widget>[
+      FlatButton(
+        child: Text('Yes'),
+        onPressed: () {
+          //Navigator.pop(context);
+        },
+      ),
+      FlatButton(
+        child: Text('No'),
+        onPressed: () {
+         // Navigator.pop(context);
+        },
+      ),
+    ],
+  );
 }

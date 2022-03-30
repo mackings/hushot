@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Signup.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:hushot_technologies/Views/onboard1.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Signup(),
+      home: Onboard1(),
     );
   }
 

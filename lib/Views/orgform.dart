@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hushot_technologies/Views/Orgdashboard.dart';
 import 'package:hushot_technologies/Views/Signin.dart';
 
 class Orgform extends StatefulWidget {
@@ -25,7 +26,7 @@ class _OrgformState extends State<Orgform> {
           child: Column(
             children: [
               SizedBox(
-                height: 80,
+                height: 40,
               ),
               Row(
                 children: [
@@ -49,18 +50,7 @@ class _OrgformState extends State<Orgform> {
                 ],
               ),
               SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text('Tell Us About Your Organisation',
-                        style: TextStyle(
-                            fontFamily: 'montserrat',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              ),
+             
               SizedBox(
                 height: 20,
               ),
@@ -142,6 +132,32 @@ class _OrgformState extends State<Orgform> {
                   ),
                 ),
               ),
+              SizedBox(height: 20,),
+               Center(
+                child: Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width - 30,
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        border: InputBorder.none,
+                        suffixIcon: Icon(
+                          Icons.visibility_off,
+                          color: Colors.white,
+                        ),
+                        hintStyle: TextStyle(fontFamily: 'montserrat'),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -199,9 +215,7 @@ class _OrgformState extends State<Orgform> {
               SizedBox(
                 height: 20,
               ),
-              SizedBox(
-                height: 20,
-              ),
+              
               Center(
                 child: GestureDetector(
                   onTap: () {
@@ -221,7 +235,7 @@ class _OrgformState extends State<Orgform> {
                               actions: [
                                 FlatButton(
                                   onPressed: () {
-                                    Navigator.pop(context);
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Orgdashboard()));
                                   },
                                   child: Text('Ok',
                                       style: TextStyle(
