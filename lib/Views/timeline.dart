@@ -219,7 +219,7 @@ class _TimeLineState extends State<TimeLine> {
                                           style: TextStyle(
                                               fontFamily: 'montserrat',
                                               fontSize: 15,
-                                              color: Colors.white)),
+                                              color: Colors.yellow)),
                                 ),
                               ],
                             ),
