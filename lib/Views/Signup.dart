@@ -442,6 +442,7 @@ class _SignupState extends State<Signup> {
                 child: GestureDetector(
                   onTap: () {
                     Signupuser();
+                    
                   },
                   child: Container(
                     height: 60,

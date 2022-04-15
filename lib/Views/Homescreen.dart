@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:hushot_technologies/Views/Notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:hushot_technologies/Views/postjob.dart';
@@ -15,6 +18,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final remoteconfig = FirebaseRemoteConfig.instance;
+
+  Future Getremotevalues() async {
+    final updatevalues = remoteconfig.fetchAndActivate();
+    await remoteconfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: Duration(seconds: 1),
+      minimumFetchInterval: Duration(seconds: 1),
+    ));
+  }
+
   final ccontrollers = CarouselController();
   final slideimg = [
     'https://www.workitdaily.com/media-library/man-happy-at-a-job-he-doesn-t-like.jpg?id=27147414&width=2000&quality=85&coordinates=40%2C0%2C60%2C0&height=1500'
@@ -23,6 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final slideimg2 = [
     'https://number8.com/wp-content/uploads/2017/05/Job-Happiness-Why-You-Should-Look-Into-Tech-1030x687.jpeg'
   ];
+
+  final Usermail = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text('lp', style: TextStyle(color: Colors.white)),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Postjob()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Postjob()));
                     },
                     child: Icon(
                       Icons.menu,
@@ -53,21 +66,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     width: 10,
                   ),
-                  Text('Welcome BabTech',
+                  Text('Welcome User',
                       style: TextStyle(
                           fontFamily: 'montserrat',
                           fontSize: 15,
                           fontWeight: FontWeight.bold)),
                   SizedBox(
-                    width: 140,
+                    width: 160,
                   ),
-                  GestureDetector(  
+                  GestureDetector(
                       onTap: (() {
-                       // Navigator.push(context, MaterialPageRoute(builder: (context) => Postjob()));
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => TimeLine()));
-                           
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => Postjob()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TimeLine()));
                       }),
-                      child: Icon(Icons.timeline)),
+                      child: Icon(Icons.emergency)),
                 ],
               ),
               SizedBox(height: 10),
@@ -300,79 +315,98 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              CarouselSlider(
-                items: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => Orgform()));
-                      print('Job1');
-                    },
-                    child: Container(
-                      height: 200,
-                      width: MediaQuery.of(context).size.width - 15,
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text('Babtech Computers',
-                              style: TextStyle(
-                                  fontFamily: 'montserrat',
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold)),
-                          Row(
+              SizedBox(height: MediaQuery.of(context).size.height / 15),
+              Container(
+                height: MediaQuery.of(context).size.height - 630,
+                width: MediaQuery.of(context).size.width - 20,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 15),
+                    GestureDetector(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
                             children: [
-                              SizedBox(width: 40),
-                              Text('Job Title:',
+                              Icon(Icons.home, color: Colors.white, size: 30),
+                              Text('Home',
                                   style: TextStyle(
                                       fontFamily: 'montserrat',
                                       color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(width: 10),
-                              Text('Backend Developer',
-                                  style: TextStyle(
-                                      fontFamily: 'montserrat',
-                                      color: Colors.white,
-                                      fontSize: 15,
+                                      fontSize: 10,
                                       fontWeight: FontWeight.bold)),
                             ],
                           ),
-                          Row(
+                        )),
+                    SizedBox(width: 15),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TimeLine()));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
                             children: [
-                              SizedBox(width: 70),
-                              Text('Job Status:',
+                              Icon(Icons.timeline,
+                                  color: Colors.white, size: 30),
+                              Text('Job Timeline',
                                   style: TextStyle(
                                       fontFamily: 'montserrat',
                                       color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(width: 10),
-                              Text('Available',
-                                  style: TextStyle(
-                                      fontFamily: 'montserrat',
-                                      color: Colors.white,
-                                      fontSize: 15,
+                                      fontSize: 10,
                                       fontWeight: FontWeight.bold)),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-                options: CarouselOptions(
-                  height: 90,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
+                        )),
+                    SizedBox(width: 15),
+                    GestureDetector(
+                        onTap: () {
+                          Getremotevalues();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Notifications()));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Icon(Icons.notifications,
+                                  color: Colors.white, size: 30),
+                              Text('Notifications',
+                                  style: TextStyle(
+                                      fontFamily: 'montserrat',
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        )),
+                    SizedBox(width: 15),
+                    GestureDetector(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Icon(Icons.person, color: Colors.white, size: 30),
+                              Text('Account',
+                                  style: TextStyle(
+                                      fontFamily: 'montserrat',
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        )),
+                  ],
                 ),
               ),
             ]),

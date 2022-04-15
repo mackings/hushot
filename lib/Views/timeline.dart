@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,6 +10,7 @@ import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:hushot_technologies/Views/postjob.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
 
 class TimeLine extends StatefulWidget {
   const TimeLine({Key? key}) : super(key: key);
@@ -17,6 +20,42 @@ class TimeLine extends StatefulWidget {
 }
 
 class _TimeLineState extends State<TimeLine> {
+  var mailurl = 'https://easymail.p.rapidapi.com/send';
+  bool reply = true;
+
+  Future SendProposal() async {
+    var response = await http.post(
+      Uri.parse(mailurl),
+      headers: {
+        'content-type': 'application/json',
+          'x-rapidapi-host': 'easymail.p.rapidapi.com',
+          'x-rapidapi-key': 'e3ab93c74dmsh84262fafd4ee9f9p1530a5jsn61dbaea296d8'
+      },
+
+      body: jsonEncode({
+          "from": "Admin@Hushot Technomologies",
+          "to": 'macsonline500@gmail.com',
+          "subject": "Test Successful",
+          "message":"<h1>The Test was Successsful</h1>",
+          "show_noreply_warnin": reply
+        }),
+       
+
+
+    );
+
+
+    if (response.statusCode == 202) {
+      var responseJson = json.decode(response.body);
+      print('success');
+      print(responseJson);
+    } else {
+      print('error');
+      print(response.statusCode);
+    }
+      
+  }
+
   //dynamic Posteremail;
   //final Posterid = FirebaseAuth.instance.currentUser!.uid;
 
@@ -54,7 +93,7 @@ class _TimeLineState extends State<TimeLine> {
                         height: 20,
                       ),
                       Container(
-                        height: 210,
+                        height: 250,
                         width: MediaQuery.of(context).size.width - 20,
                         decoration: BoxDecoration(
                           color: Colors.black,
@@ -89,9 +128,9 @@ class _TimeLineState extends State<TimeLine> {
                                       fontSize: 15,
                                       color: Colors.white),
                                 ),
-                                SizedBox(width: 20,),
-
-                                
+                                SizedBox(
+                                  width: 20,
+                                ),
                               ],
                             ),
                             Row(
@@ -202,24 +241,36 @@ class _TimeLineState extends State<TimeLine> {
                                       fontSize: 15,
                                       color: Colors.white),
                                 ),
-
-
-                                
                               ],
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               children: [
-                                SizedBox(width:15 ,),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 GestureDetector(
-                                  onTap: (){
-                                    print('You clicked on the job');
+                                  onTap: () {
+                                    SendProposal();
                                   },
-                                  child: Text('Apply Now',
+                                  child: Container(
+                                    height: 40,
+                                    width:
+                                        MediaQuery.of(context).size.width - 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.amber,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Center(
+                                      child: Text('Apply Now',
                                           style: TextStyle(
                                               fontFamily: 'montserrat',
                                               fontSize: 15,
-                                              color: Colors.yellow)),
+                                              color: Colors.white)),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -257,7 +308,7 @@ Widget AF() {
       FlatButton(
         child: Text('No'),
         onPressed: () {
-         // Navigator.pop(context);
+          // Navigator.pop(context);
         },
       ),
     ],
