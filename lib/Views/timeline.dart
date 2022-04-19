@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hushot_technologies/Models/jobmodels.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
@@ -12,14 +13,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 
-class TimeLine extends StatefulWidget {
+class TimeLine extends ConsumerStatefulWidget {
   const TimeLine({Key? key}) : super(key: key);
 
   @override
-  State<TimeLine> createState() => _TimeLineState();
+  ConsumerState<TimeLine> createState() => _TimeLineState();
 }
 
-class _TimeLineState extends State<TimeLine> {
+class _TimeLineState extends ConsumerState<TimeLine> {
   var mailurl = 'https://easymail.p.rapidapi.com/send';
   bool reply = true;
 

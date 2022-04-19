@@ -235,8 +235,8 @@ class _Onboard1State extends State<Onboard1> {
               ),
               GestureDetector(
                 onTap: () {
-                  //Navigator.pushReplacement(context,
-                   //   MaterialPageRoute(builder: (context) => Orgform()));
+                  Navigator.pushReplacement(context,
+                     MaterialPageRoute(builder: (context) => Orgform()));
                 },
                 child: Container(
                   height: 60,

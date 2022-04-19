@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Orgdashboard.dart';
 import 'package:hushot_technologies/Views/Signin.dart';
+import 'package:hushot_technologies/Views/verifyotp.dart';
 
 class Orgform extends StatefulWidget {
   const Orgform({Key? key}) : super(key: key);
@@ -235,7 +236,7 @@ class _OrgformState extends State<Orgform> {
                               actions: [
                                 FlatButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Orgdashboard()));
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Verifyotp()));
                                   },
                                   child: Text('Ok',
                                       style: TextStyle(

@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Signup.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:hushot_technologies/Views/onboard1.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp( ProviderScope(child: MyApp()));
   await Firebase.initializeApp();
-
-
-
 
   AwesomeNotifications().initialize("resource://drawable/slide4", [
     NotificationChannel(
@@ -24,7 +22,6 @@ void main() async {
       enableVibration: true,
     )
   ]);
-
 }
 
 class MyApp extends StatefulWidget {
@@ -41,15 +38,8 @@ class _MyAppState extends State<MyApp> {
       home: Onboard1(),
     );
   }
-
-
-
-
 }
 
-Future<void> _handler( RemoteMessage message) async {
-await AwesomeNotifications().createNotificationFromJsonData(message.data );
-
+Future<void> _handler(RemoteMessage message) async {
+  await AwesomeNotifications().createNotificationFromJsonData(message.data);
 }
-
-

@@ -18,6 +18,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+Future getiddata() async{
+
+  
+
+}
+
+
   final remoteconfig = FirebaseRemoteConfig.instance;
 
   Future Getremotevalues() async {
