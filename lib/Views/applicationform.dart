@@ -224,7 +224,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
-                          child: Text('Continue',
+                          child: Text('Continues',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'montserrat'))),
