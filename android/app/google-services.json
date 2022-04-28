@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1012124237125-cl5mrvs65crj3n3t47rre1qed766ual0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hushot_technologies",
+            "certificate_hash": "adc83b19e793491b1c6ea0fd8b46cd9f32e592fc"
+          }
+        },
+        {
           "client_id": "1012124237125-5mm5jjdmair3u8mcdgec4s8avk4kc4fd.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Orgdashboard.dart';
@@ -18,10 +19,50 @@ class _OrgformState extends State<Orgform> {
   TextEditingController _phonenumberController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  var otpurl = ('https://wipple-sms-verify-otp.p.rapidapi.com/send');
+  final otpurl = ('https://wipple-sms-verify-otp.p.rapidapi.com/send');
 
   Future Reqotp() async {
-    await http.post(Uri.parse(otpurl), headers: {});
+    var response = await http.post(
+      Uri.parse(otpurl),
+      headers: {
+        'contentType': "application/json",
+        "x-rapidapi-host": "wipple-sms-verify-otp.p.rapidapi.com",
+        "x-rapidapi-key": "e3ab93c74dmsh84262fafd4ee9f9p1530a5jsn61dbaea296d8",
+      },
+      body: {
+        "app_name": "Hushottechnologies",
+        "code_length": 6,
+        "code_type": "number",
+        "expiration_second": 60,
+        "phone_number": _phonenumberController.text.trim(),
+      },
+    );
+
+    if (response.statusCode == 200) {
+      print(response.statusCode);
+      print(response.body);
+    } else {
+      print('otp not sent');
+      print(response.statusCode);
+    }
+  }
+
+  final Auth = FirebaseAuth.instance;
+
+  Future fbotp() async {
+    await Auth.verifyPhoneNumber(
+        phoneNumber: _phonenumberController.text.toString(),
+        verificationCompleted: (AuthCredential credential) async {},
+        verificationFailed: (exception) {
+          print(exception);
+        },
+        codeSent: (verificationId, [code]) async {
+          print(verificationId);
+          print(code);
+        },
+        codeAutoRetrievalTimeout: (verificationId) {
+          print(verificationId);
+        });
   }
 
   @override
@@ -126,6 +167,7 @@ class _OrgformState extends State<Orgform> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      controller: _phonenumberController,
                       decoration: InputDecoration(
                         hintText: 'Best Phone',
                         border: InputBorder.none,
@@ -227,6 +269,8 @@ class _OrgformState extends State<Orgform> {
               Center(
                 child: GestureDetector(
                   onTap: () {
+                    //Reqotp();
+                    fbotp();
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
@@ -256,7 +300,8 @@ class _OrgformState extends State<Orgform> {
                                           fontWeight: FontWeight.bold)),
                                 )
                               ],
-                            ));
+                            )
+                            );
                   },
                   child: Container(
                     height: 60,
