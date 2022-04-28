@@ -102,17 +102,7 @@ class _SignupState extends State<Signup> {
     print('Saved Data');
   }
 
-  Future Setstate() async {
-    FirebaseAuth.instance.authStateChanges().listen((user) {
-      if (user != null) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
-      } else {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignIn()));
-      }
-    });
-  }
+
 
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
@@ -474,11 +464,11 @@ class _SignupState extends State<Signup> {
                     ),
                     GestureDetector(
                         onTap: () {
-                          Setstate();
-                          //Navigator.push(
-                          //  context,
-                          //  MaterialPageRoute(
-                          //      builder: (context) => SignIn()));
+                         // Setstate();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignIn()));
                         },
                         child: Text(
                           ' Login ',

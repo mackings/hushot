@@ -56,7 +56,7 @@ class _NotificationsState extends State<Notifications> {
               height: 30,
             ),
             Container(
-              height: MediaQuery.of(context).size.height - 590,
+              height: 90,
               width: MediaQuery.of(context).size.width - 20,
               decoration: BoxDecoration(
                 color: Colors.amber,

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:hushot_technologies/Views/Account.dart';
 import 'package:hushot_technologies/Views/Notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
@@ -319,21 +320,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 140),
               Container(
-                height: MediaQuery.of(context).size.height - 700,
+                height: 70,
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              
                   children: [
-                    SizedBox(width: 15),
+                    //SizedBox(width: 15),
                     GestureDetector(
                         onTap: () {},
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
                               Icon(Icons.home, color: Colors.white, size: 30),
@@ -346,7 +349,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ],
                           ),
                         )),
-                    SizedBox(width: 15),
+                    SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -355,7 +358,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   builder: (context) => TimeLine()));
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
                               Icon(Icons.timeline,
@@ -369,7 +372,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ],
                           ),
                         )),
-                    SizedBox(width: 15),
+                    SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {
                           Getremotevalues();
@@ -379,7 +382,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   builder: (context) => Notifications()));
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
                               Icon(Icons.notifications,
@@ -393,11 +396,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ],
                           ),
                         )),
-                    SizedBox(width: 15),
+                    SizedBox(width: 10),
                     GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Acccountpage()));
+                        },
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
                               Icon(Icons.person, color: Colors.white, size: 30),

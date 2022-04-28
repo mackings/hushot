@@ -72,7 +72,7 @@ class _OrgformState extends State<Orgform> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: 'Organisation Name',
                         border: InputBorder.none,
                         suffixIcon: Icon(

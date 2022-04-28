@@ -18,8 +18,8 @@ class _SignInState extends State<SignIn> {
   TextEditingController _passwordController = TextEditingController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final user = FirebaseAuth.instance.currentUser!;
-  final Useremail = FirebaseAuth.instance.currentUser!.email;
+  //final user = FirebaseAuth.instance.currentUser!;
+  //final Useremail = FirebaseAuth.instance.currentUser!.email;
 
   Future Signin() async {
     await _auth
@@ -169,7 +169,7 @@ class _SignInState extends State<SignIn> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      //Signin();
+                      Signin();
                       // print(Useremail);
                     },
                     child: Container(

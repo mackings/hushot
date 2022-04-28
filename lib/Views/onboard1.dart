@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:hushot_technologies/Views/Homescreen.dart';
+import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:hushot_technologies/Views/Signup.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
@@ -18,6 +20,19 @@ class Onboard1 extends ConsumerStatefulWidget {
 
 class _Onboard1State extends ConsumerState<Onboard1> {
   //var usermail = FirebaseAuth.instance.currentUser!.email;
+
+    Future Setstate() async {
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user != null) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      } else {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SignIn()));
+      }
+    });
+  }
+  
   var userprovider = Provider<String>(
     (ref) {
       return 'Hello Man';
@@ -46,7 +61,7 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                     width: 10,
                   ),
                   Text(
-                    'Connecting The Best \n To The Best ',
+                    'Connectings The Best \n To The Best ',
                     style: TextStyle(
                         fontFamily: 'montserrat',
                         fontSize: 20,
@@ -166,7 +181,7 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                         size: 50,
                       ),
                       Text(
-                        '100 HRMs',
+                        '100 HRM',
                         style: TextStyle(
                             fontFamily: 'montserrat',
                             fontSize: 15,
@@ -272,8 +287,9 @@ class _Onboard1State extends ConsumerState<Onboard1> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Signup()));
+                  Setstate();
+                 // Navigator.push(context,
+                     // MaterialPageRoute(builder: (context) => Signup()));
                 },
                 child: Container(
                   height: 60,
