@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Orgdashboard.dart';
 import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:hushot_technologies/Views/verifyotp.dart';
+import 'package:http/http.dart' as http;
 
 class Orgform extends StatefulWidget {
   const Orgform({Key? key}) : super(key: key);
@@ -16,6 +17,12 @@ class _OrgformState extends State<Orgform> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phonenumberController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  var otpurl = ('https://wipple-sms-verify-otp.p.rapidapi.com/send');
+
+  Future Reqotp() async {
+    await http.post(Uri.parse(otpurl), headers: {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +58,6 @@ class _OrgformState extends State<Orgform> {
                 ],
               ),
               SizedBox(height: 10),
-             
               SizedBox(
                 height: 20,
               ),
@@ -133,8 +139,10 @@ class _OrgformState extends State<Orgform> {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
-               Center(
+              SizedBox(
+                height: 20,
+              ),
+              Center(
                 child: Container(
                   height: 60,
                   width: MediaQuery.of(context).size.width - 30,
@@ -216,7 +224,6 @@ class _OrgformState extends State<Orgform> {
               SizedBox(
                 height: 20,
               ),
-              
               Center(
                 child: GestureDetector(
                   onTap: () {
@@ -228,15 +235,19 @@ class _OrgformState extends State<Orgform> {
                                       fontFamily: 'montserrat',
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
-                              content: Text('Your Organisation has been Submitted for Approval',
+                              content: Text(
+                                  'Your Organisation has been Submitted for Approval',
                                   style: TextStyle(
                                       fontFamily: 'montserrat',
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold)),
                               actions: [
-                                FlatButton(
+                                MaterialButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Verifyotp()));
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Verifyotp()));
                                   },
                                   child: Text('Ok',
                                       style: TextStyle(

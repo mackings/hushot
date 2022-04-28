@@ -169,7 +169,7 @@ class _ApplicationFormState extends State<ApplicationForm> {
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold)),
                               actions: [
-                                FlatButton(
+                                MaterialButton(
                                   onPressed: () {
                                     showDialog(
                                         context: context,
@@ -189,10 +189,13 @@ class _ApplicationFormState extends State<ApplicationForm> {
                                                       fontWeight:
                                                           FontWeight.bold)),
                                               actions: [
-                                                FlatButton(
+                                                MaterialButton(
                                                   onPressed: () {
-                                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                                                 
+                                                    Navigator.pushReplacement(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                HomeScreen()));
                                                   },
                                                   child: Text('OK',
                                                       style: TextStyle(

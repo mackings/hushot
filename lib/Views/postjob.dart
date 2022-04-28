@@ -24,25 +24,18 @@ class _PostjobState extends State<Postjob> {
   //Post Jobs
   final user = FirebaseAuth.instance.currentUser;
 
-
   Future PostaJob() async {
-   
     FirebaseFirestore.instance.collection('UploadedJobs').add({
       'jobTitle': _Jobtitle.text.trim(),
       'jobDescription': _Jobdescription.text.trim(),
       'jobLocation': _Joblocation.text.trim(),
       'jobAmount': _Payableamount.text.trim(),
       'peopleRequired': _Peoplerequired.text.trim(),
-      'PosterEmail':'Macsonline500@gmail.com'
+      'PosterEmail': 'Macsonline500@gmail.com'
     }).whenComplete(() => print('New Job Posted'));
   }
 
-
-  Future Jobnotifications() async {
-
-    
-
-  }
+  Future Jobnotifications() async {}
 
   final jobkey = GlobalKey<FormState>();
 
@@ -67,10 +60,10 @@ class _PostjobState extends State<Postjob> {
                     ),
                     Text('Post a Job',
                         style: TextStyle(
-                            fontFamily: 'montserrat',
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            )),
+                          fontFamily: 'montserrat',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        )),
                   ],
                 ),
                 Row(
@@ -296,7 +289,7 @@ class _PostjobState extends State<Postjob> {
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold)),
                                 actions: [
-                                  FlatButton(
+                                  MaterialButton(
                                     onPressed: () {
                                       if (jobkey.currentState!.validate()) {
                                         PostaJob();
@@ -319,14 +312,14 @@ class _PostjobState extends State<Postjob> {
                                                           fontWeight:
                                                               FontWeight.bold)),
                                                   actions: [
-                                                    FlatButton(
+                                                    MaterialButton(
                                                       onPressed: () {
                                                         Navigator.pushReplacement(
                                                             context,
                                                             MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                       HomeScreen()));
+                                                                        HomeScreen()));
                                                       },
                                                       child: Text('Ok',
                                                           style: TextStyle(
@@ -359,7 +352,7 @@ class _PostjobState extends State<Postjob> {
                                                           fontWeight:
                                                               FontWeight.bold)),
                                                   actions: [
-                                                    FlatButton(
+                                                    MaterialButton(
                                                       onPressed: () {
                                                         Navigator.pushReplacement(
                                                             context,

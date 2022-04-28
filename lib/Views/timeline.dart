@@ -29,22 +29,17 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       Uri.parse(mailurl),
       headers: {
         'content-type': 'application/json',
-          'x-rapidapi-host': 'easymail.p.rapidapi.com',
-          'x-rapidapi-key': 'e3ab93c74dmsh84262fafd4ee9f9p1530a5jsn61dbaea296d8'
+        'x-rapidapi-host': 'easymail.p.rapidapi.com',
+        'x-rapidapi-key': 'e3ab93c74dmsh84262fafd4ee9f9p1530a5jsn61dbaea296d8'
       },
-
       body: jsonEncode({
-          "from": "Admin@Hushot Technomologies",
-          "to": 'macsonline500@gmail.com',
-          "subject": "Test Successful",
-          "message":"<h1>The Test was Successsful</h1>",
-          "show_noreply_warnin": reply
-        }),
-       
-
-
+        "from": "Admin@Hushot Technomologies",
+        "to": 'macsonline500@gmail.com',
+        "subject": "Test Successful",
+        "message": "<h1>The Test was Successsful</h1>",
+        "show_noreply_warnin": reply
+      }),
     );
-
 
     if (response.statusCode == 202) {
       var responseJson = json.decode(response.body);
@@ -54,7 +49,6 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       print('error');
       print(response.statusCode);
     }
-      
   }
 
   //dynamic Posteremail;
@@ -300,13 +294,13 @@ Widget AF() {
   return AlertDialog(
     title: Text('Are you sure you want to delete this job?'),
     actions: <Widget>[
-      FlatButton(
+      MaterialButton(
         child: Text('Yes'),
         onPressed: () {
           //Navigator.pop(context);
         },
       ),
-      FlatButton(
+      MaterialButton(
         child: Text('No'),
         onPressed: () {
           // Navigator.pop(context);

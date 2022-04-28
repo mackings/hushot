@@ -7,17 +7,27 @@ import 'package:hushot_technologies/Views/Signup.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Onboard1 extends StatefulWidget {
+class Onboard1 extends ConsumerStatefulWidget {
   const Onboard1({Key? key}) : super(key: key);
 
   @override
-  State<Onboard1> createState() => _Onboard1State();
+  ConsumerState<Onboard1> createState() => _Onboard1State();
 }
 
-class _Onboard1State extends State<Onboard1> {
+class _Onboard1State extends ConsumerState<Onboard1> {
+  //var usermail = FirebaseAuth.instance.currentUser!.email;
+  var userprovider = Provider<String>(
+    (ref) {
+      return 'Hello Man';
+    },
+  );
+
   @override
   Widget build(BuildContext context) {
+    String myval = ref.watch(userprovider);
+
     return MaterialApp(
       home: Scaffold(
         body: SingleChildScrollView(
@@ -36,7 +46,7 @@ class _Onboard1State extends State<Onboard1> {
                     width: 10,
                   ),
                   Text(
-                    'Connecting The Best \n To The Best',
+                    'Connecting The Best \n To The Best ',
                     style: TextStyle(
                         fontFamily: 'montserrat',
                         fontSize: 20,
@@ -236,7 +246,7 @@ class _Onboard1State extends State<Onboard1> {
               GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(context,
-                     MaterialPageRoute(builder: (context) => Orgform()));
+                      MaterialPageRoute(builder: (context) => Orgform()));
                 },
                 child: Container(
                   height: 60,
@@ -262,10 +272,8 @@ class _Onboard1State extends State<Onboard1> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Signup()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Signup()));
                 },
                 child: Container(
                   height: 60,

@@ -38,7 +38,7 @@ class _SignupState extends State<Signup> {
                 style: TextStyle(fontSize: 15, fontFamily: 'Montserrat'),
               ),
               actions: <Widget>[
-                FlatButton(
+                MaterialButton(
                   child: Text(
                     "Sign In",
                     style: TextStyle(fontSize: 15, fontFamily: 'Montserrat'),
@@ -69,7 +69,7 @@ class _SignupState extends State<Signup> {
                 style: TextStyle(fontSize: 15, fontFamily: 'Montserrat'),
               ),
               actions: <Widget>[
-                FlatButton(
+                MaterialButton(
                   child: Text(
                     "Ok",
                     style: TextStyle(fontSize: 15, fontFamily: 'Montserrat'),
@@ -442,7 +442,6 @@ class _SignupState extends State<Signup> {
                 child: GestureDetector(
                   onTap: () {
                     Signupuser();
-                    
                   },
                   child: Container(
                     height: 60,

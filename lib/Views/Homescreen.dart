@@ -9,21 +9,18 @@ import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:hushot_technologies/Views/postjob.dart';
 import 'package:hushot_technologies/Views/timeline.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hushot_technologies/Views/Onboard1.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-Future getiddata() async{
-
-  
-
-}
-
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  Future getiddata() async {}
 
   final remoteconfig = FirebaseRemoteConfig.instance;
 
@@ -322,9 +319,9 @@ Future getiddata() async{
                   ),
                 ],
               ),
-              SizedBox(height: MediaQuery.of(context).size.height / 15),
+              SizedBox(height: 10),
               Container(
-                height: MediaQuery.of(context).size.height - 630,
+                height: MediaQuery.of(context).size.height - 700,
                 width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                   color: Colors.black,

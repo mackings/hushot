@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Homescreen.dart';
 
-
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -27,7 +26,6 @@ class _SignInState extends State<SignIn> {
         .signInWithEmailAndPassword(
             email: _emailController.text, password: _passwordController.text)
         .then((user) {
-         
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
     }).catchError((e) {
@@ -45,7 +43,7 @@ class _SignInState extends State<SignIn> {
                 style: TextStyle(fontSize: 15, fontFamily: 'Montserrat'),
               ),
               actions: <Widget>[
-                FlatButton(
+                MaterialButton(
                   child: Text(
                     "Ok",
                     style: TextStyle(fontSize: 15, fontFamily: 'Montserrat'),
@@ -172,8 +170,7 @@ class _SignInState extends State<SignIn> {
                   child: GestureDetector(
                     onTap: () {
                       //Signin();
-                     // print(Useremail);
-                    
+                      // print(Useremail);
                     },
                     child: Container(
                       height: 60,
