@@ -12,6 +12,7 @@ import 'package:hushot_technologies/Views/postjob.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TimeLine extends ConsumerStatefulWidget {
   const TimeLine({Key? key}) : super(key: key);
@@ -33,10 +34,11 @@ class _TimeLineState extends ConsumerState<TimeLine> {
         'x-rapidapi-key': 'e3ab93c74dmsh84262fafd4ee9f9p1530a5jsn61dbaea296d8'
       },
       body: jsonEncode({
-        "from": "Admin@Hushot Technomologies",
+        "from": "$hname",
         "to": 'macsonline500@gmail.com',
-        "subject": "Test Successful",
-        "message": "<h1>The Test was Successsful</h1>",
+        "subject": "Job Application",
+        "message":
+            "<h4>  Name : $hname  Email: $hemail  Phone: $hphone Location : $hlocation Proposal: $hproposal</h4>",
         "show_noreply_warnin": reply
       }),
     );
@@ -50,6 +52,89 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       print(response.statusCode);
     }
   }
+
+  SendProfile() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var name = prefs.getString('name');
+    var email = prefs.getString('email');
+    var location = prefs.getString('location');
+    var proposal = prefs.getString('proposal');
+    var phone = prefs.getString('phone');
+
+    print("Prefs Got $name ");
+    print("prefs Got $email");
+    print("prefs Got $location");
+    print("prefs Got $proposal");
+    print("prefs Got $phone");
+
+    //setState(() {
+    // hname = name;
+    // hemail = email;
+    // hlocation = location;
+    // hproposal = proposal;
+    // hphone = phone;
+    //});
+
+    final aname = StateProvider(
+      (ref) {
+        return name;
+      },
+    );
+
+    final amail = StateProvider(
+      (ref) {
+        return email;
+      },
+    );
+
+    final aphone = StateProvider(
+      (ref) {
+        return phone;
+      },
+    );
+
+    final alocation = StateProvider(
+      (ref) {
+        return location;
+      },
+    );
+
+    final aproposal = StateProvider(
+      (ref) {
+        return email;
+      },
+    );
+
+
+ var Rmail = ref.watch(amail);
+  var Rname = ref.watch(aname);
+  var Rphone = ref.watch(aphone);
+  var Rlocation = ref.watch(alocation);
+  var Rproposal = ref.watch(aproposal);
+
+    setState(() {
+      hemail = Rmail;
+      hname = Rname;
+      hphone = Rphone;
+      hlocation = Rlocation;
+      hproposal = Rproposal;
+
+    });
+
+
+
+    print("Prefs got $hname");
+    print("State mail got $Rmail");
+    
+  }
+
+  dynamic hname;
+  dynamic hemail;
+  dynamic hlocation;
+  dynamic hproposal;
+  dynamic hphone;
+
+  dynamic postermail;
 
   //dynamic Posteremail;
   //final Posterid = FirebaseAuth.instance.currentUser!.uid;
@@ -248,7 +333,54 @@ class _TimeLineState extends ConsumerState<TimeLine> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    SendProposal();
+                                    //SendProposal();
+                                    SendProfile();
+                                    //SendProposal();
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text('Apply for this job',
+                                                style: TextStyle(
+                                                    fontFamily: 'montserrat',
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            content: Text(
+                                                'Apply with Job Profile ?',
+                                                style: TextStyle(
+                                                    fontFamily: 'montserrat',
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            actions: <Widget>[
+                                              MaterialButton(
+                                                child: Text('Yes',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            'montserrat',
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                onPressed: () {
+                                                  SendProposal();
+                                                },
+                                              ),
+                                              MaterialButton(
+                                                child: Text('No',
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            'montserrat',
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        });
                                   },
                                   child: Container(
                                     height: 40,

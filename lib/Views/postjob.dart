@@ -2,18 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hushot_technologies/Views/Homescreen.dart';
 import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:hushot_technologies/Auths/auths.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Postjob extends StatefulWidget {
+class Postjob extends ConsumerStatefulWidget {
   const Postjob({Key? key}) : super(key: key);
 
   @override
-  State<Postjob> createState() => _PostjobState();
+  ConsumerState<Postjob> createState() => _PostjobState();
 }
 
-class _PostjobState extends State<Postjob> {
+class _PostjobState extends ConsumerState<Postjob> {
   //Post Jobs Controller
   TextEditingController _Jobtitle = TextEditingController();
   TextEditingController _Joblocation = TextEditingController();
@@ -23,6 +25,7 @@ class _PostjobState extends State<Postjob> {
 
   //Post Jobs
   final user = FirebaseAuth.instance.currentUser;
+  dynamic posteremail;
 
   Future PostaJob() async {
     FirebaseFirestore.instance.collection('UploadedJobs').add({
@@ -31,11 +34,20 @@ class _PostjobState extends State<Postjob> {
       'jobLocation': _Joblocation.text.trim(),
       'jobAmount': _Payableamount.text.trim(),
       'peopleRequired': _Peoplerequired.text.trim(),
-      'PosterEmail': 'Macsonline500@gmail.com'
+      'PosterEmail': '$posteremail',
     }).whenComplete(() => print('New Job Posted'));
+
+    final SharedPreferences dprefs = await SharedPreferences.getInstance();
+    dprefs.setString('postermail', _Jobtitle.text.trim());
+    var qmail = dprefs.getString('postermail');
+
+    setState(() {
+      posteremail = qmail;
+      print(posteremail);
+    });
   }
 
-  Future Jobnotifications() async {}
+  
 
   final jobkey = GlobalKey<FormState>();
 

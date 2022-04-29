@@ -7,6 +7,8 @@ class Jobs {
   String? Location;
   String? Amount;
   String? PeopleRequired;
+
+
  
 
   Jobs({
@@ -16,6 +18,8 @@ class Jobs {
     this.Jobtitle,
     this.PeopleRequired,
    
+  
+   
   });
 
   factory Jobs.fromJson(DocumentSnapshot snapshot) => Jobs(
@@ -24,6 +28,8 @@ class Jobs {
         Amount: snapshot["jobAmount"],
         Jobtitle: snapshot["jobTitle"],
         PeopleRequired: snapshot["peopleRequired"],
+      
+      
       
       );
 }

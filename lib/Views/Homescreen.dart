@@ -320,7 +320,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 140),
+              SizedBox(height: 110),
               Container(
                 height: 70,
                 width: MediaQuery.of(context).size.width - 20,
