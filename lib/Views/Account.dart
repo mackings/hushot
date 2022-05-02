@@ -9,6 +9,7 @@ import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:file_picker/file_picker.dart';
 
 class Acccountpage extends ConsumerStatefulWidget {
   const Acccountpage({Key? key}) : super(key: key);
@@ -54,6 +55,22 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
     var Rivername = StateProvider((refs) {
       return name;
     });
+  }
+
+  var cv;
+
+  pickcv() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var Procv = await FilePicker.platform.pickFiles();
+    if (Procv != null) {
+      setState(() {
+        cv = Procv.files.first.path;
+        print('cv path is $cv');
+
+        prefs.setString('cvlink', cv);
+
+      });
+    } else {}
   }
 
   dynamic hname;
@@ -249,6 +266,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                   Center(
                     child: GestureDetector(
                       onTap: () {
+                        pickcv();
                         SaveProfile();
                         Getprofile();
                       },
@@ -279,12 +297,10 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                             bounce: true,
                             isDismissible: true,
                             backgroundColor: Colors.black,
-                            
                             context: context,
                             builder: (context) => Container(
                                   height: 400,
                                   width: MediaQuery.of(context).size.width,
-                                
                                   child: Column(
                                     children: [
                                       SizedBox(height: 20),
@@ -304,7 +320,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                             child: Row(
                                               children: [
                                                 Text(
-                                                  'Name :\n $hname ',
+                                                  'Name :\n $hname  ',
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 20,

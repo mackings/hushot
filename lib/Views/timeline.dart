@@ -38,7 +38,7 @@ class _TimeLineState extends ConsumerState<TimeLine> {
         "to": 'macsonline500@gmail.com',
         "subject": "Job Application",
         "message":
-            "<h4>  Name : $hname  Email: $hemail  Phone: $hphone Location : $hlocation Proposal: $hproposal</h4>",
+            "<h4>  Name : $hname  Email: $hemail  Phone: $hphone Location : $hlocation Proposal: $hproposal Cv :$hcvlink</h4>",
         "show_noreply_warnin": reply
       }),
     );
@@ -60,12 +60,14 @@ class _TimeLineState extends ConsumerState<TimeLine> {
     var location = prefs.getString('location');
     var proposal = prefs.getString('proposal');
     var phone = prefs.getString('phone');
+    var cvlink = prefs.getString('cvlink');
 
     print("Prefs Got $name ");
     print("prefs Got $email");
     print("prefs Got $location");
     print("prefs Got $proposal");
     print("prefs Got $phone");
+    print('prefs Got $cvlink');
 
     //setState(() {
     // hname = name;
@@ -105,12 +107,19 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       },
     );
 
+    final acvlink = StateProvider(
+      (ref) {
+        return cvlink;
+      },
+    );
+
 
  var Rmail = ref.watch(amail);
   var Rname = ref.watch(aname);
   var Rphone = ref.watch(aphone);
   var Rlocation = ref.watch(alocation);
   var Rproposal = ref.watch(aproposal);
+  var Rcvlink = ref.watch(acvlink);
 
     setState(() {
       hemail = Rmail;
@@ -118,6 +127,8 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       hphone = Rphone;
       hlocation = Rlocation;
       hproposal = Rproposal;
+      hcvlink = Rcvlink;
+
 
     });
 
@@ -133,6 +144,7 @@ class _TimeLineState extends ConsumerState<TimeLine> {
   dynamic hlocation;
   dynamic hproposal;
   dynamic hphone;
+  dynamic hcvlink;
 
   dynamic postermail;
 

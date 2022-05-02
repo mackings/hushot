@@ -266,6 +266,7 @@ class _OrgformState extends State<Orgform> {
               SizedBox(
                 height: 20,
               ),
+              
               Center(
                 child: GestureDetector(
                   onTap: () {
@@ -275,6 +276,7 @@ class _OrgformState extends State<Orgform> {
                         context: context,
                         builder: (context) => AlertDialog(
                               title: Text('Success',
+
                                   style: TextStyle(
                                       fontFamily: 'montserrat',
                                       fontSize: 20,

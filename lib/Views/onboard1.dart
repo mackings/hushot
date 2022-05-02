@@ -28,7 +28,7 @@ class _Onboard1State extends ConsumerState<Onboard1> {
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } else {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignIn()));
+            context, MaterialPageRoute(builder: (context) => Signup()));
       }
     });
   }
