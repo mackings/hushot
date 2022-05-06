@@ -49,7 +49,7 @@ class _NotificationsState extends State<Notifications> {
                     style: TextStyle(
                         fontFamily: 'montserrat',
                         fontSize: 20,
-                        fontWeight: FontWeight.normal)),
+                        fontWeight: FontWeight.bold)),
               ],
             ),
             SizedBox(

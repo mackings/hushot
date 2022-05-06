@@ -14,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Acccountpage extends ConsumerStatefulWidget {
   const Acccountpage({Key? key}) : super(key: key);
@@ -191,13 +192,13 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(width: 20),
+                      SizedBox(width: 10),
                       GestureDetector(
                           onTap: () {
                             Navigator.pop(context);
                           },
                           child: Icon(Icons.arrow_back)),
-                      SizedBox(width: 80),
+                      SizedBox(width: 70),
                       Text(
                         'Job Profile',
                         style: TextStyle(
@@ -205,7 +206,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(width: 100),
+                      SizedBox(width: 70),
                       GestureDetector(
                           onTap: () {
                             Buymembership();
@@ -370,9 +371,47 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                   Center(
                     child: GestureDetector(
                       onTap: () {
-                        pickcv();
-                        SaveProfile();
-                        Getprofile();
+                        //pickcv();
+                        //SaveProfile();
+                        // Getprofile();
+
+                        showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                  title: Text(
+                                    'Profile Update',
+                                    style: TextStyle(fontFamily: 'montserrat'),
+                                  ),
+                                  content: Text(
+                                    'Update Job profile?',
+                                    style: TextStyle(fontFamily: 'montserrat'),
+                                  ),
+                                  actions: <Widget>[
+                                    MaterialButton(
+                                      child: Text(
+                                        'Update Now',
+                                        style:
+                                            TextStyle(fontFamily: 'montserrat'),
+                                      ),
+                                      onPressed: () {
+                                        //pickcv();
+                                        if (Formkey.currentState!.validate()) {
+                                          SaveProfile();
+                                          Navigator.pop(context);
+                                          Getprofile();
+                                        Fluttertoast.showToast(
+                                          msg: "Profile Updated",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                        );
+                                        Navigator.pop(context);
+                                        }
+                                        SaveProfile();
+                                        
+                                      },
+                                    )
+                                  ],
+                                ));
                       },
                       child: Container(
                         height: 60,
@@ -406,6 +445,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                   height: 500,
                                   width: MediaQuery.of(context).size.width,
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(height: 20),
                                       Text(
@@ -417,19 +457,57 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(height: 20),
-                                      Center(
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(20.0),
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  height: 70,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      60,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.amber,
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      'Name :\n $hname ',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 20,
+                                                          fontFamily:
+                                                              'montserrat',
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Center(
                                               child: Row(
                                                 children: [
                                                   Container(
                                                     height: 70,
-                                                    width: MediaQuery.of(context)
-                                                            .size
-                                                            .width -
-                                                        60,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width -
+                                                            60,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -441,129 +519,93 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                                           const EdgeInsets.all(
                                                               8.0),
                                                       child: Text(
-                                                        'Name :\n $hname ',
+                                                        'Email : \n $hemail ',
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 20,
                                                             fontFamily:
                                                                 'montserrat',
                                                             fontWeight:
-                                                                FontWeight.bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(20.0),
-                                              child: Center(
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      height: 70,
-                                                      width: MediaQuery.of(context)
-                                                              .size
-                                                              .width -
-                                                          60,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                10),
-                                                        color: Colors.amber,
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets.all(
-                                                                8.0),
-                                                        child: Text(
-                                                          'Email : \n $hemail ',
-                                                          style: TextStyle(
-                                                              color: Colors.white,
-                                                              fontSize: 20,
-                                                              fontFamily:
-                                                                  'montserrat',
-                                                              fontWeight:
-                                                                  FontWeight.bold),
-                                                        ),
-                                                      ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  height: 50,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      60,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.amber,
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      'Location : $hlocation ',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 20,
+                                                          fontFamily:
+                                                              'montserrat',
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(20.0),
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    height: 50,
-                                                    width: MediaQuery.of(context)
-                                                            .size
-                                                            .width -
-                                                        60,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: Colors.amber,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        'Location : $hlocation ',
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'montserrat',
-                                                            fontWeight:
-                                                                FontWeight.bold),
-                                                      ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  height: 60,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      60,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.amber,
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      'Phone : $hphone ',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 20,
+                                                          fontFamily:
+                                                              'montserrat',
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(20.0),
-                                              child: Row(
-                                                children: [
-                                                  Container(
-                                                    height: 60,
-                                                    width: MediaQuery.of(context)
-                                                            .size
-                                                            .width -
-                                                        60,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: Colors.amber,
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        'Phone : $hphone ',
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 20,
-                                                            fontFamily:
-                                                                'montserrat',
-                                                            fontWeight:
-                                                                FontWeight.bold),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       )
                                     ],
                                   ),

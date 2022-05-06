@@ -190,13 +190,13 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                     ],
                   ),
                   SizedBox(
-                    width: 30,
+                    width: 80,
                   ),
                   Column(
                     children: [
                       Icon(
                         Icons.location_city,
-                        color: Colors.blue,
+                        color: Colors.black,
                         size: 50,
                       ),
                       Text(
@@ -235,17 +235,17 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                     ],
                   ),
                   SizedBox(
-                    width: 30,
+                    width: 80,
                   ),
                   Column(
                     children: [
                       Icon(
-                        Icons.location_city,
+                        Icons.map_outlined,
                         color: Colors.black,
                         size: 50,
                       ),
                       Text(
-                        '6000 Projects',
+                        '500 Locations',
                         style: TextStyle(
                             fontFamily: 'montserrat',
                             fontSize: 15,

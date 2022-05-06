@@ -61,7 +61,8 @@ class _VerifyotpState extends ConsumerState<Verifyotp> {
       smsCode: _otp.text,
     );
     await Auth.signInWithCredential(credential)
-        .then((value) => print('Logged In'));
+        .then((value) =>
+         print('Logged In'));
   }
 
   TextEditingController _otp = TextEditingController();
@@ -146,7 +147,7 @@ class _VerifyotpState extends ConsumerState<Verifyotp> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
-                        child: Text('Send',
+                        child: Text('Send OTP',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'montserrat'))),
@@ -164,13 +165,13 @@ class _VerifyotpState extends ConsumerState<Verifyotp> {
                   height: 60,
                   width: MediaQuery.of(context).size.width - 30,
                   decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
-                        child: Text('Verify ',
+                        child: Text('Verify OTP',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'montserrat'))),
