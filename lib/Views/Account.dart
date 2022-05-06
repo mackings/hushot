@@ -522,7 +522,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                                         'Email : \n $hemail ',
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 20,
+                                                            fontSize: 18,
                                                             fontFamily:
                                                                 'montserrat',
                                                             fontWeight:
