@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hushot_technologies/Views/Homescreen.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -16,20 +18,24 @@ class _SignInState extends State<SignIn> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  final RoundedLoadingButtonController _btnController =new RoundedLoadingButtonController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //final user = FirebaseAuth.instance.currentUser!;
   //final Useremail = FirebaseAuth.instance.currentUser!.email;
 
-  Future Signin() async {
-    await _auth
+  void Signin() async {
+  
+await _auth
         .signInWithEmailAndPassword(
             email: _emailController.text, password: _passwordController.text)
         .then((user) {
+        
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
     }).catchError((e) {
       print(e);
+      
       showDialog(
           context: context,
           builder: (context) {
@@ -72,7 +78,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(
                   height: 170,
                 ),
-                Text('Welcome back',
+                Text('Welcome back to Hushot',
                     style: TextStyle(
                         fontFamily: 'montserrat',
                         fontSize: 30,
@@ -169,7 +175,8 @@ class _SignInState extends State<SignIn> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      Signin();
+                      
+                    Signin();
                       // print(Useremail);
                     },
                     child: Container(
@@ -179,14 +186,15 @@ class _SignInState extends State<SignIn> {
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Center(
-                            child: Text('Login',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'montserrat'))),
-                      ),
+                      child: RoundedLoadingButton(
+                        color: Colors.black,
+                        
+                        controller: _btnController,
+                         onPressed: () {
+                          Signin();
+                         },
+                         child: Text('Login', style: TextStyle(color: Colors.white, fontFamily: 'montserrat')),
+                         )
                     ),
                   ),
                 ),

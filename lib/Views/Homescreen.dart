@@ -21,7 +21,50 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  Future getiddata() async {}
+  Apply() async {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('Error',
+                  style: TextStyle(
+                      fontFamily: 'montserrat',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
+              content: Text('Premium Members Only',
+                  style: TextStyle(
+                      fontFamily: 'montserrat',
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold)),
+              actions: [
+                MaterialButton(
+                  onPressed: () {},
+                  child: Text('Buy Now',
+                      style: TextStyle(
+                          fontFamily: 'montserrat',
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                ),
+                MaterialButton(
+                  onPressed: () {},
+                  child: Text('Others',
+                      style: TextStyle(
+                          fontFamily: 'montserrat',
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Exit',
+                      style: TextStyle(
+                          fontFamily: 'montserrat',
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold)),
+                )
+              ],
+            ));
+  }
 
   final remoteconfig = FirebaseRemoteConfig.instance;
 
@@ -49,7 +92,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return MaterialApp(
       home: Scaffold(
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
           child: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
@@ -102,7 +144,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             image: AssetImage('assets/slide1.jpeg'),
                             fit: BoxFit.cover)),
                   ),
-
+        
                   Container(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width - 20,
@@ -111,7 +153,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             image: AssetImage('assets/slide2.jpeg'),
                             fit: BoxFit.cover)),
                   ),
-
+        
                   Container(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width - 20,
@@ -138,199 +180,215 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              Container(
-                height: 150,
-                width: MediaQuery.of(context).size.width - 15,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 50,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Text('Big Data',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 50,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Text('Python',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 50,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.yellow,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Text('Java',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      //second row
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 50,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Text('React',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 50,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Text('Apps',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              height: 50,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: Colors.yellow,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Text('Cloud',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
               Row(
                 children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 50,
-                    width: MediaQuery.of(context).size.width - 20,
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text('Active Hiring',
-                              style: TextStyle(
-                                  fontFamily: 'montserrat',
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold)),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(Icons.person_add,
-                                color: Colors.white, size: 30),
-                          ),
-                        ],
-                      ),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Top Jobs',
+                        style: TextStyle(
+                            fontSize: 20, fontFamily: 'montserrat')),
                   ),
                 ],
               ),
-              SizedBox(height: 110),
               Container(
-                height: 70,
+                height: 110,
+                width: MediaQuery.of(context).size.width - 30,
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CircleAvatar(
+                        child: Icon(
+                          Icons.ac_unit,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                    
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('Service Design',
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontFamily: 'montserrat')),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: Colors.black,
+                              size: 20,
+                            ),
+                            Text('California',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontFamily: 'montserrat')),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                    child: Text('5.0',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontFamily: 'montserrat'))),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                height: 30,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                    child: Text('Lagos',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white,
+                                            fontFamily: 'montserrat'))),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          Apply();
+                        },
+                        child: Icon(
+                          Icons.telegram,
+                          color: Colors.white,
+                          size: 50,
+                        )),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 110,
                 width: MediaQuery.of(context).size.width - 20,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CircleAvatar(
+                        child: Icon(
+                          Icons.ac_unit,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                   
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('Service Design',
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontFamily: 'montserrat')),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            Text('California',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontFamily: 'montserrat')),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 30,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                    child: Text('5.0',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black,
+                                            fontFamily: 'montserrat'))),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                height: 30,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                    child: Text('Lagos',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black,
+                                            fontFamily: 'montserrat'))),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Icon(
+                      Icons.telegram,
+                      color: Colors.white,
+                      size: 50,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 80,
+                width: MediaQuery.of(context).size.width - 30,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              
                   children: [
                     //SizedBox(width: 15),
                     GestureDetector(
@@ -399,13 +457,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     SizedBox(width: 10),
                     GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Acccountpage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Acccountpage()));
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
-                              Icon(Icons.person, color: Colors.white, size: 30),
+                              Icon(Icons.person,
+                                  color: Colors.white, size: 30),
                               Text('Account',
                                   style: TextStyle(
                                       fontFamily: 'montserrat',

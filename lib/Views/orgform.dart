@@ -1,19 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hushot_technologies/Views/Orgdashboard.dart';
 import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:hushot_technologies/Views/verifyotp.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Orgform extends StatefulWidget {
+class Orgform extends ConsumerStatefulWidget {
   const Orgform({Key? key}) : super(key: key);
 
   @override
-  State<Orgform> createState() => _OrgformState();
+  ConsumerState<Orgform> createState() => _OrgformState();
 }
 
-class _OrgformState extends State<Orgform> {
+class _OrgformState extends ConsumerState<Orgform> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phonenumberController = TextEditingController();
@@ -49,16 +51,31 @@ class _OrgformState extends State<Orgform> {
 
   final Auth = FirebaseAuth.instance;
 
-  Future fbotp() async {
+  dynamic vid;
+
+  fbotp() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
     await Auth.verifyPhoneNumber(
         phoneNumber: _phonenumberController.text.toString(),
-        verificationCompleted: (AuthCredential credential) async {},
+
+        verificationCompleted: (AuthCredential credential) async {
+
+          Auth.signInWithCredential(credential).then((value) async {
+           Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => Orgdashboard()));
+          });
+        },
+
         verificationFailed: (exception) {
           print(exception);
         },
         codeSent: (verificationId, [code]) async {
           print(verificationId);
           print(code);
+
+         
+          
         },
         codeAutoRetrievalTimeout: (verificationId) {
           print(verificationId);
@@ -266,17 +283,14 @@ class _OrgformState extends State<Orgform> {
               SizedBox(
                 height: 20,
               ),
-              
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    //Reqotp();
-                    fbotp();
+                    // fbotp();
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
                               title: Text('Success',
-
                                   style: TextStyle(
                                       fontFamily: 'montserrat',
                                       fontSize: 20,
@@ -290,10 +304,11 @@ class _OrgformState extends State<Orgform> {
                               actions: [
                                 MaterialButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Verifyotp()));
+                                    //fbotp();
+                                     Navigator.pushReplacement(
+                                       context,
+                                      MaterialPageRoute(
+                                         builder: (context) => Verifyotp()));
                                   },
                                   child: Text('Ok',
                                       style: TextStyle(
@@ -302,8 +317,7 @@ class _OrgformState extends State<Orgform> {
                                           fontWeight: FontWeight.bold)),
                                 )
                               ],
-                            )
-                            );
+                            ));
                   },
                   child: Container(
                     height: 60,
