@@ -113,13 +113,12 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       },
     );
 
-
- var Rmail = ref.watch(amail);
-  var Rname = ref.watch(aname);
-  var Rphone = ref.watch(aphone);
-  var Rlocation = ref.watch(alocation);
-  var Rproposal = ref.watch(aproposal);
-  var Rcvlink = ref.watch(acvlink);
+    var Rmail = ref.watch(amail);
+    var Rname = ref.watch(aname);
+    var Rphone = ref.watch(aphone);
+    var Rlocation = ref.watch(alocation);
+    var Rproposal = ref.watch(aproposal);
+    var Rcvlink = ref.watch(acvlink);
 
     setState(() {
       hemail = Rmail;
@@ -128,15 +127,10 @@ class _TimeLineState extends ConsumerState<TimeLine> {
       hlocation = Rlocation;
       hproposal = Rproposal;
       hcvlink = Rcvlink;
-
-
     });
-
-
 
     print("Prefs got $hname");
     print("State mail got $Rmail");
-    
   }
 
   dynamic hname;
@@ -376,6 +370,7 @@ class _TimeLineState extends ConsumerState<TimeLine> {
                                                             FontWeight.bold)),
                                                 onPressed: () {
                                                   SendProposal();
+                                                  Navigator.pop(context);
                                                 },
                                               ),
                                               MaterialButton(
