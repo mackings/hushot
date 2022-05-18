@@ -418,7 +418,10 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                         width: MediaQuery.of(context).size.width - 30,
                         decoration: BoxDecoration(
                           color: Colors.black,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10),
+                          ),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),

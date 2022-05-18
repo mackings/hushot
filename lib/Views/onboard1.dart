@@ -10,6 +10,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hushot_technologies/Views/premium.dart';
 
 class Onboard1 extends ConsumerStatefulWidget {
   const Onboard1({Key? key}) : super(key: key);
@@ -175,10 +176,18 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                   ),
                   Column(
                     children: [
-                      Icon(
-                        Icons.person,
-                        color: Colors.black,
-                        size: 50,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyWidget()));
+                        },
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.black,
+                          size: 50,
+                        ),
                       ),
                       Text(
                         '100 HRM',
