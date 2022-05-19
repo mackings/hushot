@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hushot_technologies/Views/Homepg.dart';
 import 'package:hushot_technologies/Views/Homescreen.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -32,7 +33,7 @@ await _auth
         .then((user) {
         
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => dahomepg()));
     }).catchError((e) {
       print(e);
       

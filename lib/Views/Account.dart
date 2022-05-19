@@ -36,6 +36,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
     setState(() {
       if (pickedimg != null) {
         _image = File(pickedimg.path);
+        // print(_image!.readAsBytes());
       } else {
         print("no image selected");
       }
@@ -109,6 +110,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
       setState(() {
         cv = Procv.files.first.path;
         print('cv path is $cv');
+        print('cv bytes is ${cv.bytes}');
 
         prefs.setString('cvlink', cv);
       });
@@ -137,7 +139,9 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                       fontWeight: FontWeight.bold)),
               actions: [
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    pickcv();
+                  },
                   child: Text('Buy Now',
                       style: TextStyle(
                           fontFamily: 'montserrat',
@@ -399,15 +403,14 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                           SaveProfile();
                                           Navigator.pop(context);
                                           Getprofile();
-                                        Fluttertoast.showToast(
-                                          msg: "Profile Updated",
-                                          toastLength: Toast.LENGTH_LONG,
-                                          gravity: ToastGravity.BOTTOM,
-                                        );
-                                        Navigator.pop(context);
+                                          Fluttertoast.showToast(
+                                            msg: "Profile Updated",
+                                            toastLength: Toast.LENGTH_LONG,
+                                            gravity: ToastGravity.BOTTOM,
+                                          );
+                                          Navigator.pop(context);
                                         }
                                         SaveProfile();
-                                        
                                       },
                                     )
                                   ],

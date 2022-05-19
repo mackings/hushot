@@ -8,6 +8,7 @@ import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:hushot_technologies/Views/Signup.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
+import 'package:hushot_technologies/Views/Homepg.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hushot_technologies/Views/premium.dart';
@@ -26,7 +27,7 @@ class _Onboard1State extends ConsumerState<Onboard1> {
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user != null) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            context, MaterialPageRoute(builder: (context) => dahomepg()));
       } else {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Signup()));
@@ -181,7 +182,7 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyWidget()));
+                                  builder: (context) => dahomepg()));
                         },
                         child: Icon(
                           Icons.person,
