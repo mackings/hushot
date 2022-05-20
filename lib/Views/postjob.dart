@@ -63,7 +63,7 @@ class _PostjobState extends ConsumerState<Postjob> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 80,
+                  height: 50,
                 ),
                 Row(
                   children: [
@@ -90,7 +90,7 @@ class _PostjobState extends ConsumerState<Postjob> {
                             fontWeight: FontWeight.bold)),
                   ],
                 ),
-                SizedBox(height: 10),
+               
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -98,11 +98,7 @@ class _PostjobState extends ConsumerState<Postjob> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text('Tell Your Job Requirements',
-                          style: TextStyle(
-                              fontFamily: 'montserrat',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),
+                     
                     ],
                   ),
                 ),
@@ -179,7 +175,7 @@ class _PostjobState extends ConsumerState<Postjob> {
                 ),
                 Center(
                   child: Container(
-                    height: 60,
+                    height: 120,
                     width: MediaQuery.of(context).size.width - 30,
                     decoration: BoxDecoration(
                       color: Colors.amber,
@@ -188,6 +184,7 @@ class _PostjobState extends ConsumerState<Postjob> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        maxLines: 3,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please Enter Job Description';

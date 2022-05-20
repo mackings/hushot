@@ -11,7 +11,7 @@ import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/Homepg.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hushot_technologies/Views/premium.dart';
+import 'package:hushot_technologies/Views/postjob.dart';
 
 class Onboard1 extends ConsumerStatefulWidget {
   const Onboard1({Key? key}) : super(key: key);
@@ -182,7 +182,7 @@ class _Onboard1State extends ConsumerState<Onboard1> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => dahomepg()));
+                                  builder: (context) => Postjob()));
                         },
                         child: Icon(
                           Icons.person,

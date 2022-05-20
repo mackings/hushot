@@ -46,6 +46,7 @@ class _OrgdashboardState extends State<Orgdashboard> {
                   height: 50,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       width: 30,

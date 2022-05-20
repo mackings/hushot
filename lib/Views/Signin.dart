@@ -79,7 +79,7 @@ await _auth
                 SizedBox(
                   height: 170,
                 ),
-                Text('Welcome back to Hushot',
+                Text('Hushot Jobs',
                     style: TextStyle(
                         fontFamily: 'montserrat',
                         fontSize: 30,

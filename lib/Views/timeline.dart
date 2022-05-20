@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hushot_technologies/Models/jobmodels.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
@@ -13,6 +14,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class TimeLine extends ConsumerStatefulWidget {
   const TimeLine({Key? key}) : super(key: key);
@@ -38,7 +40,7 @@ class _TimeLineState extends ConsumerState<TimeLine> {
         "to": 'macsonline500@gmail.com',
         "subject": "Job Application",
         "message":
-            "<h4>  Name : $hname  Email: $hemail  Phone: $hphone Location : $hlocation Proposal: $hproposal Cv :$hcvlink</h4>",
+            "<h4>  Name : $hname  Email: $hemail  Phone: $hphone Location : $hlocation PortfolioUrl: $hproposal Cv :$hcvlink</h4>",
         "show_noreply_warnin": reply
       }),
     );
@@ -103,7 +105,7 @@ class _TimeLineState extends ConsumerState<TimeLine> {
 
     final aproposal = StateProvider(
       (ref) {
-        return email;
+        return proposal;
       },
     );
 
@@ -141,6 +143,9 @@ class _TimeLineState extends ConsumerState<TimeLine> {
   dynamic hcvlink;
 
   dynamic postermail;
+
+  var fav = Colors.amber;
+  var unfav = Colors.white;
 
   //dynamic Posteremail;
   //final Posterid = FirebaseAuth.instance.currentUser!.uid;
@@ -215,7 +220,17 @@ class _TimeLineState extends ConsumerState<TimeLine> {
                                       color: Colors.white),
                                 ),
                                 SizedBox(
-                                  width: 20,
+                                  width: 80,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      unfav = fav;
+                                
+                                    });
+                                  },
+                                  child: Icon(Icons.favorite,
+                                      color: unfav, size: 20),
                                 ),
                               ],
                             ),
@@ -232,12 +247,58 @@ class _TimeLineState extends ConsumerState<TimeLine> {
 
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    '${AvailableJobs.Description}',
-                                    style: TextStyle(
-                                        fontFamily: 'montserrat',
-                                        fontSize: 15,
-                                        color: Colors.white),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      showMaterialModalBottomSheet(
+                                          backgroundColor: Colors.black,
+                                          bounce: true,
+                                          isDismissible: true,
+                                          context: context,
+                                          builder: (context) => Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  20),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  20)),
+                                                ),
+                                                height: 300,
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        '${AvailableJobs.Description}',
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                'montserrat',
+                                                            fontSize: 15,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ));
+                                    },
+                                    child: Text(
+                                      'View Description',
+                                      style: TextStyle(
+                                          fontFamily: 'montserrat',
+                                          fontSize: 15,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -370,6 +431,17 @@ class _TimeLineState extends ConsumerState<TimeLine> {
                                                             FontWeight.bold)),
                                                 onPressed: () {
                                                   SendProposal();
+
+                                                  Fluttertoast.showToast(
+                                                    msg:
+                                                        'Application Successful',
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                    backgroundColor:
+                                                        Colors.black,
+                                                    textColor: Colors.white,
+                                                  );
+
                                                   Navigator.pop(context);
                                                 },
                                               ),

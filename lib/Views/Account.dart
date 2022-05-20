@@ -458,7 +458,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                         ' Job Profile',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 30,
+                                            fontSize: 20,
                                             fontFamily: 'Montserrat',
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -471,34 +471,16 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                             padding: const EdgeInsets.all(20.0),
                                             child: Row(
                                               children: [
-                                                Container(
-                                                  height: 70,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width -
-                                                      60,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Colors.amber,
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      'Name :\n $hname ',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'montserrat',
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                Icon(Icons.person,
+                                                    color: Colors.white,
+                                                    size: 40,
                                                     ),
-                                                  ),
-                                                ),
+                                                SizedBox(width: 20),
+
+                                                    Text('${hname} ',
+                                                     style: TextStyle(
+                                                       color: Colors.white,
+                                                        fontSize: 20, fontFamily: 'Montserrat'),),
                                               ],
                                             ),
                                           ),
@@ -507,36 +489,16 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                             child: Center(
                                               child: Row(
                                                 children: [
-                                                  Container(
-                                                    height: 70,
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width -
-                                                            60,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: Colors.amber,
+                                                  Icon(Icons.email,
+                                                    color: Colors.white,
+                                                    size: 40,
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        'Email : \n $hemail ',
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 18,
-                                                            fontFamily:
-                                                                'montserrat',
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                    ),
-                                                  ),
+                                                SizedBox(width: 20),
+
+                                                    Text('${hemail} ',
+                                                     style: TextStyle(
+                                                       color: Colors.white,
+                                                        fontSize: 20, fontFamily: 'Montserrat'),),
                                                 ],
                                               ),
                                             ),
@@ -545,34 +507,16 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                             padding: const EdgeInsets.all(20.0),
                                             child: Row(
                                               children: [
-                                                Container(
-                                                  height: 50,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width -
-                                                      60,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Colors.amber,
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      'Location : $hlocation ',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'montserrat',
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                Icon(Icons.location_on  ,
+                                                    color: Colors.white,
+                                                    size: 40,
                                                     ),
-                                                  ),
-                                                ),
+                                                SizedBox(width: 20),
+
+                                                    Text('${hlocation} ',
+                                                     style: TextStyle(
+                                                       color: Colors.white,
+                                                        fontSize: 20, fontFamily: 'Montserrat'),),
                                               ],
                                             ),
                                           ),
@@ -580,34 +524,16 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                                             padding: const EdgeInsets.all(20.0),
                                             child: Row(
                                               children: [
-                                                Container(
-                                                  height: 60,
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width -
-                                                      60,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: Colors.amber,
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      'Phone : $hphone ',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'montserrat',
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                               Icon(Icons.phone,
+                                                    color: Colors.white,
+                                                    size: 40,
                                                     ),
-                                                  ),
-                                                ),
+                                                SizedBox(width: 20),
+
+                                                    Text('${hphone} ',
+                                                     style: TextStyle(
+                                                       color: Colors.white,
+                                                        fontSize: 20, fontFamily: 'Montserrat'),),
                                               ],
                                             ),
                                           ),

@@ -41,7 +41,7 @@ class _NotificationsState extends State<Notifications> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Icon(Icons.arrow_back_ios)),
+                    child: Icon(Icons.arrow_back)),
                 SizedBox(
                   width: 80,
                 ),
@@ -56,20 +56,23 @@ class _NotificationsState extends State<Notifications> {
               height: 30,
             ),
             Container(
-              height: 90,
-              width: MediaQuery.of(context).size.width - 20,
+              height: 120,
+              width: MediaQuery.of(context).size.width - 40,
               decoration: BoxDecoration(
-                color: Colors.amber,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(10),
               ),
 
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: Text('${remoteconfig.getString('notification')}',
-                    style: TextStyle(
-                        fontFamily: 'montserrat',
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal) ),
+                child: Center(
+                  child: Text('${remoteconfig.getString('notification')}',
+                      style: TextStyle(
+                          fontFamily: 'montserrat',
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal) ),
+                ),
               ),
             ),
           ],

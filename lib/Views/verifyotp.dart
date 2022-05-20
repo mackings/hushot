@@ -63,6 +63,7 @@ class _VerifyotpState extends ConsumerState<Verifyotp> {
     await Auth.signInWithCredential(credential)
         .then((value) =>
          print('Logged In'));
+         
   }
 
   TextEditingController _otp = TextEditingController();
@@ -159,7 +160,8 @@ class _VerifyotpState extends ConsumerState<Verifyotp> {
               ),
               GestureDetector(
                 onTap: () {
-                  verifyno();
+                  //verifyno();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Orgdashboard()));
                 },
                 child: Container(
                   height: 60,
