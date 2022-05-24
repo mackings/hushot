@@ -15,6 +15,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hushot_technologies/Views/profileupdates.dart';
 import 'package:hushot_technologies/Views/timeline.dart';
 
 class dahomepg extends ConsumerStatefulWidget {
@@ -474,10 +475,14 @@ class _dahomepgState extends ConsumerState<dahomepg> {
                             SizedBox(width: 42.33),
                             GestureDetector(
                               onTap: (() {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Acccountpage()));
+                               // Navigator.push(
+                               //     context,
+                                //    MaterialPageRoute(
+                                     //   builder: (context) => Acccountpage()));
+                                      Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Profileupdates()));
                               }),
                               child: Container(
                                 width: 36,

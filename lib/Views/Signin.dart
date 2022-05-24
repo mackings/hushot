@@ -21,6 +21,7 @@ class _SignInState extends State<SignIn> {
   TextEditingController _passwordController = TextEditingController();
   final RoundedLoadingButtonController _btnController =new RoundedLoadingButtonController();
 
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   //final user = FirebaseAuth.instance.currentUser!;
   //final Useremail = FirebaseAuth.instance.currentUser!.email;
@@ -31,6 +32,7 @@ await _auth
         .signInWithEmailAndPassword(
             email: _emailController.text, password: _passwordController.text)
         .then((user) {
+          
         
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => dahomepg()));

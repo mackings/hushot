@@ -9,6 +9,7 @@ import 'package:hushot_technologies/Views/Notifications.dart';
 import 'package:hushot_technologies/Views/applicationform.dart';
 import 'package:hushot_technologies/Views/orgform.dart';
 import 'package:hushot_technologies/Views/postjob.dart';
+import 'package:hushot_technologies/Views/profileupdates.dart';
 import 'package:hushot_technologies/Views/timeline.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hushot_technologies/Views/Onboard1.dart';
@@ -477,10 +478,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   SizedBox(width: 10),
                   GestureDetector(
                       onTap: () {
-                        Navigator.push(
+                        //Navigator.push(
+                         ///   context,
+                         //   MaterialPageRoute(
+                          //      builder: (context) => Acccountpage()));
+                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Acccountpage()));
+                                builder: (context) => const Profileupdates()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),

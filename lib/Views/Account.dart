@@ -206,7 +206,7 @@ class _AcccountpageState extends ConsumerState<Acccountpage> {
                       Text(
                         'Job Profile',
                         style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 20,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold),
                       ),
