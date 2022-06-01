@@ -71,6 +71,7 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
 
     final _formKey = GlobalKey<FormState>();
     bool isLoading = false;
+    bool ismoving = false;
 
     return MaterialApp(
       home: Scaffold(
@@ -444,17 +445,23 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                                                   ),
                                                   GestureDetector(
                                                     onTap: () {
-                                                      GetEdu();
-                                                      
+                                                      setState(() {
+                                                        ismoving = true;
+                                                      });
 
-                                                      /// if (_formKey.currentState!
-                                                      //   .validate()) {
-                                                      // SaveDatas();
-                                                      // }
-                                                      //ref.read(test1.state);
-                                                      //print(watcher.toString());
+                                                      Future.delayed(
+                                                              Duration(
+                                                                  seconds: 5))
+                                                          .then((value) {
+                                                        setState(() {
+                                                          ismoving = false;
+                                                        });
+                                                      });
+                                                   
                                                     },
-                                                    child: Container(
+                                                    child: ismoving ? CircularProgressIndicator(
+                                                      backgroundColor: Colors.black,
+                                                    ): Container(
                                                       height: 55,
                                                       width:
                                                           MediaQuery.of(context)

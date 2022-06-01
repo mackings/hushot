@@ -62,6 +62,7 @@ class _PostjobState extends ConsumerState<Postjob> {
           child: Container(
             child: Column(
               children: [
+                
                 SizedBox(
                   height: 50,
                 ),
