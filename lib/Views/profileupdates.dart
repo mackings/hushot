@@ -6,9 +6,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hushot_technologies/Views/Homescreen.dart';
 import 'package:hushot_technologies/Views/Signin.dart';
 import 'package:hushot_technologies/Auths/auths.dart';
+import 'package:hushot_technologies/widgets/showaf.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -22,17 +24,46 @@ class Profileupdates extends ConsumerStatefulWidget {
 class _ProfileupdatesState extends ConsumerState<Profileupdates> {
   @override
   Widget build(BuildContext context) {
+    var hintstyle =
+        TextStyle(color: Colors.white, fontFamily: 'montserrat', fontSize: 15);
+    //edu
+
     TextEditingController InstitutionNameController = TextEditingController();
     TextEditingController Description = TextEditingController();
     TextEditingController MinQualification = TextEditingController();
     TextEditingController StartDate = TextEditingController();
     TextEditingController EndDate = TextEditingController();
+//workexperience
+    TextEditingController wxname = TextEditingController();
+    TextEditingController wxPosition = TextEditingController();
+    TextEditingController wxStartDate = TextEditingController();
+    TextEditingController exEndDate = TextEditingController();
 
     dynamic DName;
     dynamic DDes;
     dynamic DInstMinQ;
     dynamic DStartDate;
     dynamic DEndDate;
+
+    printas() {
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Alert",style: TextStyle(fontFamily: 'montserrat'),),
+            content: Text("Please fill all the fields"),
+            actions: <Widget>[
+              MaterialButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        },
+      );
+    }
 
     Future SaveEdu() async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -403,9 +434,9 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                                                             Future.delayed(
                                                                     Duration(
                                                                         seconds:
-                                                                            5))
+                                                                            1))
                                                                 .then((value) {
-                                                              SaveEdu();
+                                                              //SaveEdu();
                                                               setState(() {
                                                                 isLoading =
                                                                     false;
@@ -449,41 +480,46 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                                                         ismoving = true;
                                                       });
 
-                                                      Future.delayed(
-                                                              Duration(
-                                                                  seconds: 5))
+                                                      Future.delayed(Duration(
+                                                              seconds: 1))
                                                           .then((value) {
                                                         setState(() {
                                                           ismoving = false;
                                                         });
                                                       });
-                                                   
                                                     },
-                                                    child: ismoving ? CircularProgressIndicator(
-                                                      backgroundColor: Colors.black,
-                                                    ): Container(
-                                                      height: 55,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width -
-                                                              40,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.black,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                      ),
-                                                      child: Center(
-                                                          child: Text('Show',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontFamily:
-                                                                      'montserrat',
-                                                                  fontSize:
-                                                                      20))),
-                                                    ),
+                                                    child: ismoving
+                                                        ? CircularProgressIndicator(
+                                                            backgroundColor:
+                                                                Colors.black,
+                                                          )
+                                                        : Container(
+                                                            height: 55,
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width -
+                                                                40,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color:
+                                                                  Colors.black,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                            ),
+                                                            child: Center(
+                                                                child: Text(
+                                                                    'Show',
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontFamily:
+                                                                            'montserrat',
+                                                                        fontSize:
+                                                                            20))),
+                                                          ),
                                                   )
                                                 ],
                                               ),
@@ -501,6 +537,19 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Modal(
+                    hintstyle: hintstyle,
+                    hinttext: 'Work Exp',
+                    modalheight: 600.0,
+                    description: 'Add your Work Experience',
+                    startdate: 'Start Date',
+                    enddate: 'End date',
+                    calls: ()=> printas(),
+                    
                   ),
                 ],
               ),
