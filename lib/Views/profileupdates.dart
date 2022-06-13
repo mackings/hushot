@@ -205,11 +205,11 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                     ),
                   ),
                   Modal(
-                    containermessage: 'Educational Background',
+                    containermessage: 'Work Experience',
                     hintstyle: hintstyle,
                     hinttext: 'Institution Name',
                     position: 'Degree Type',
-                    modalheight: 600.0,
+                    modalheight: 900.0,
                     description: 'About Institution',
                     startdate: 'Start Date',
                     enddate: 'End date',
@@ -224,32 +224,156 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                     controller3: MinQualification,
                     controller4: StartDate,
                     controller5: EndDate,
+                    listwidgets: [],
+                    newwid: Column(
+                      children: [
+
+                        SizedBox(height:20),
+
+                        Thecontainer(
+                          conheight: 100.0,
+                          conmaxlines: 3,
+                            conicon: Icon(Icons.person,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Recent Companies',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                             SizedBox(height:20),
+
+                        Thecontainer(
+                          conheight: 60.0,
+                          conmaxlines: null,
+                            conicon: Icon(Icons.person,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Position Held',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                            
+                             SizedBox(height:20),
+                        Thecontainer(
+                          conheight: 60.0,
+                          conmaxlines: null,
+                            conicon: Icon(Icons.calendar_month,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Start / End date',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                              SizedBox(height:10),
+                            
+                        Callbackbtn(
+                            btntext: 'Save Profile',
+                            callback: () {
+                              print('Hello Amigos');
+                            })
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
+
                   Modal(
-                    containermessage:
-                        'Work experience as acquired\n in your field ',
+                    containermessage: 'Educational Background',
                     hintstyle: hintstyle,
-                    hinttext: 'Company Name',
-                    position: 'Position',
-                    modalheight: 600.0,
-                    description: 'Add your Work Experience',
+                    hinttext: 'Institution Name',
+                    position: 'Degree Type',
+                    modalheight: 900.0,
+                    description: 'About Institution',
                     startdate: 'Start Date',
                     enddate: 'End date',
-                    icon: Icon(Icons.people, color: Colors.white),
+                    icon: Icon(Icons.school, color: Colors.white),
                     //calls: ()=> printas(),
                     calls: () async {
-                      // savetodb2();
-                      //Fetchuserdata();
+                      savetodb();
+                      print('Hiii');
                     },
-                    controller1: wxName,
-                    controller2: wxPosition,
-                    controller3: wxStartDate,
-                    controller4: exEndDate,
-                    controller5: null,
+                    controller1: InstitutionNameController,
+                    controller2: Description,
+                    controller3: MinQualification,
+                    controller4: StartDate,
+                    controller5: EndDate,
+                    listwidgets: [],
+                    newwid: Column(
+                      children: [
+
+                        SizedBox(height:20),
+                        Thecontainer(
+                          conheight: 90.0,
+                          conmaxlines: null,
+                            conicon: Icon(Icons.house,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Institution Name',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                             SizedBox(height:10),
+
+                        Thecontainer(
+                          conheight: 60.0,
+                          conmaxlines: null,
+                            conicon: Icon(Icons.face,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Qualification Earned',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                             SizedBox(height:10),
+
+                        Thecontainer(
+                          conheight: 60.0,
+                          conmaxlines: null,
+                            conicon: Icon(Icons.computer,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Course of Study',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                             SizedBox(height:10),
+
+                              Thecontainer(
+                          conheight: 60.0,
+                          conmaxlines: null,
+                            conicon: Icon(Icons.calendar_month,color: Colors.white,),
+                            coniconstyle: Colors.white,
+                            conhint: 'Start /End Date',
+                            conhintstyle: hintstyle,
+                             concontroller: null,
+                             ),
+                             SizedBox(height:20),
+                            
+                        Callbackbtn(
+                            btntext: 'Tweet',
+                            callback: () {
+                              print('Hello Amigos');
+                            })
+                      ],
+                    ),
                   ),
+                  // Modal(
+                  // containermessage:
+                  //      'Work Experience ',
+                  //  hintstyle: hintstyle,
+                  //  hinttext: 'Company Name',
+                  //  position: 'Position',
+                  //  modalheight:600.0,
+                  //  description: 'Add your Work Experience',
+                  //   startdate: 'Start Date',
+                  //   enddate: 'End date',
+                  ///   icon: Icon(Icons.people, color: Colors.white),
+                  //calls: ()=> printas(),
+                  //    calls: () async {
+                  //     // savetodb2();
+                  ////      //Fetchuserdata();
+                  //   },
+                  //    controller1: wxName,
+                  ////  controller2: wxPosition,
+                  //  controller3: wxStartDate,
+                  //   controller4: exEndDate,
+                  //   controller5: null,
+                  //  ),
                 ],
               ),
             ),
