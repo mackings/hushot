@@ -47,12 +47,13 @@ class _PostjobState extends ConsumerState<Postjob> {
     });
   }
 
-  
-
   final jobkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final vwee = Provider(
+      (ref) => '10',
+    );
     return MaterialApp(
       home: Scaffold(
           body: Form(
@@ -62,7 +63,6 @@ class _PostjobState extends ConsumerState<Postjob> {
           child: Container(
             child: Column(
               children: [
-                
                 SizedBox(
                   height: 50,
                 ),
@@ -91,7 +91,6 @@ class _PostjobState extends ConsumerState<Postjob> {
                             fontWeight: FontWeight.bold)),
                   ],
                 ),
-               
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -99,7 +98,6 @@ class _PostjobState extends ConsumerState<Postjob> {
                       SizedBox(
                         width: 10,
                       ),
-                     
                     ],
                   ),
                 ),

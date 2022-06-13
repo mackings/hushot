@@ -25,6 +25,11 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
   @override
   Widget build(BuildContext context) {
     final fuser = FirebaseAuth.instance.currentUser;
+
+    final namaprovider = StateProvider<dynamic>((ref) {
+      return fuser!.email;
+    });
+
     var hintstyle =
         TextStyle(color: Colors.white, fontFamily: 'montserrat', fontSize: 15);
     //edu
@@ -115,8 +120,6 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
         'EndDate': EndDate.text,
       }).whenComplete(() => print('saved'));
     }
-
-    
 
     Future Fetchuserdata() async {
       await FirebaseFirestore.instance
@@ -238,7 +241,7 @@ class _ProfileupdatesState extends ConsumerState<Profileupdates> {
                     icon: Icon(Icons.people, color: Colors.white),
                     //calls: ()=> printas(),
                     calls: () async {
-                     // savetodb2();
+                      // savetodb2();
                       //Fetchuserdata();
                     },
                     controller1: wxName,

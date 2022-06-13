@@ -83,7 +83,7 @@ class _VerifyotpState extends ConsumerState<Verifyotp> {
               SizedBox(
                 height: 10,
               ),
-              Image.asset('assets/hire.png'),
+              Image.asset('assets/hire.png' ),
               Container(
                 height: 60,
                 width: MediaQuery.of(context).size.width - 30,
